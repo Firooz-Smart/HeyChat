@@ -27,7 +27,9 @@ class _SplashScreenState extends State<SplashScreen> {
     final session = supabase.auth.currentSession;
     if (session == null) {
       //Register page
-      Navigator.push(context, RegisterPage.route());
+      // ignore: use_build_context_synchronously
+      Navigator.of(context)
+          .pushAndRemoveUntil(RegisterScreen.route(), (route) => false);
     } else {
       //Chat page
     }

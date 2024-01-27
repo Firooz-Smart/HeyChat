@@ -3,22 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:hey_chat/core/constants.dart';
 import 'package:hey_chat/core/helpers.dart';
 import 'package:hey_chat/main.dart';
+import 'package:hey_chat/views/screens/chat_screen.dart';
+import 'package:hey_chat/views/screens/login_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key, required this.isRegistering});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key, required this.isRegistering});
 
   static Route<void> route({isRegistering = false}) {
     return MaterialPageRoute(
-        builder: (context) => RegisterPage(isRegistering: isRegistering));
+        builder: (context) => RegisterScreen(isRegistering: isRegistering));
   }
 
   final bool isRegistering;
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
   bool isLoading = false;
   final _emailController = TextEditingController();
@@ -46,6 +48,8 @@ class _RegisterPageState extends State<RegisterPage> {
         password: pass,
         data: {'username': username},
       );
+      Navigator.pushAndRemoveUntil(
+          context, ChatScreen.route(), (route) => false);
     } on AuthException catch (e) {
       context.showErrorSnackBar(message: e.message);
     } catch (e) {
@@ -125,6 +129,7 @@ class _RegisterPageState extends State<RegisterPage> {
             TextButton(
               onPressed: () {
                 //Goto login
+                Navigator.of(context).push(LoginScreen.route());
               },
               child: const Text('I already have an account'),
             )
