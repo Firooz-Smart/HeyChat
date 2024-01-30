@@ -4,7 +4,7 @@ import 'package:hey_chat/core/constants.dart';
 import 'package:hey_chat/core/helpers.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'chat_screen.dart';
+import 'chat_screen/chat_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

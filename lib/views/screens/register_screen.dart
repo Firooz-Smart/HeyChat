@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hey_chat/core/constants.dart';
 import 'package:hey_chat/core/helpers.dart';
 import 'package:hey_chat/main.dart';
-import 'package:hey_chat/views/screens/chat_screen.dart';
+import 'package:hey_chat/views/screens/chat_screen/chat_screen.dart';
 import 'package:hey_chat/views/screens/login_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
